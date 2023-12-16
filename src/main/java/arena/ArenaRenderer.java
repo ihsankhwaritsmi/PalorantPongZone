@@ -17,8 +17,10 @@ public class ArenaRenderer {
 
 
     public void initPathImage(){
-        String imgPath1 = "src/main/maps/sillhouette.png";
-        String imgPath2 = "src/main/maps/the-thing.png";
+//        String imgPath1 = "src/main/maps/sillhouette.png";
+//        String imgPath2 = "src/main/maps/the-thing.png";
+        String imgPath1 = "src/main/maps/Arena_1.png";
+        String imgPath2 = "src/main/maps/Arena_2.png";
         try{
             imageRescaler(imgPath1, "collisionblock.png");
             imageRescaler(imgPath2, "the-map.png");

@@ -33,6 +33,8 @@ public class Game implements Runnable {
         ball.enemyCollisionCheck(enemy.getHBoxTopLeft().x, enemy.getHBoxTopLeft().y, enemy.getHBoxTopRight().x,enemy.getHBoxBottomRight().y, enemy);
         startGameLoop();
 
+
+
     }
 
     private void initClasses() {
@@ -51,6 +53,8 @@ public class Game implements Runnable {
     public void update() {
         ball.playerCollisionCheck(player.getHBoxTopLeft().x, player.getHBoxTopLeft().y, player.getHBoxTopRight().x,player.getHBoxBottomRight().y, player);
         ball.enemyCollisionCheck(enemy.getHBoxTopLeft().x, enemy.getHBoxTopLeft().y, enemy.getHBoxTopRight().x,enemy.getHBoxBottomRight().y, enemy);
+        gamePanel.updateText1(Integer.toString(ball.getPlayerScore()));
+        gamePanel.updateText2(Integer.toString(ball.getEnemyScore()));
         player.update();
         enemy.update();
     }

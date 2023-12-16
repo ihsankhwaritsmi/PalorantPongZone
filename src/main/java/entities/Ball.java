@@ -16,6 +16,8 @@ public class Ball extends Entity{
     private BufferedImage buffer;
     private int bufferWidth, bufferHeight;
     private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    private int playerScore = 0;
+    private int enemyScore = 0;
 
     private Random random;
     public Ball(float x, float y) {
@@ -26,7 +28,7 @@ public class Ball extends Entity{
     public void render(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2d.setColor(Color.BLUE);
+        g2d.setColor(new Color(237, 91, 59));
         g2d.fillOval((int) (x - radius), (int) (y - radius), (int) diameter, (int) diameter);
     }
 
@@ -42,15 +44,27 @@ public class Ball extends Entity{
                 y = y + dy;
 
                 if (x - radius < 0){
+//                    if(dx>2){
+//                        dx--;
+//                    }
                     dx = -dx;
 //                    x = radius;
+                    enemyScore++;
+
+
                 }else if (x + radius > bufferWidth){
+//                    if(dx>2){
+//                        dy--;
+//                    }
                     dx = -dx;
 //                    x = bufferWidth - radius;
+                    playerScore++;
+
                 }
 
                 if (y - radius< 0) {
                     dy = -dy;
+
 //                    y = radius;
 //                    setYDir();
                 } else if (y + radius> bufferHeight-80) {
@@ -92,6 +106,7 @@ public class Ball extends Entity{
 
     public void playerCollisionCheck(float hx, float hy, float hx1, float hy1, Player player ){
         if(x-radius < hx1 && x-radius > hx && y > hy && y<hy1){
+//            dx++;
             dx = -dx;
             player.setAttacking(true);
         }
@@ -100,10 +115,19 @@ public class Ball extends Entity{
 
     public void enemyCollisionCheck(float hx, float hy, float hx1, float hy1, Enemy enemy ){
         if(x+radius < hx1 && x+radius>hx && y>hy && y<hy1){
+//            dx++;
             dx = -dx;
             enemy.setAttacking(true);
         }
-
     }
 
+    public int getPlayerScore(){
+//        System.out.println(playerScore);
+        return playerScore;
+    }
+
+    public int getEnemyScore() {
+//        System.out.println(enemyScore);
+        return enemyScore;
+    }
 }

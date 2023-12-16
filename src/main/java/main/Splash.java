@@ -1,5 +1,7 @@
 package main;
 
+import arena.ArenaRenderer;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -35,7 +37,6 @@ public class Splash extends JFrame {
 
         ImageIcon resizedIcon = new ImageIcon(resizedImage);
         JLabel label = new JLabel(resizedIcon);
-
         panel.add(label);
         panel.setBackground(new Color(4,1,19));
         panel.setForeground(Color.WHITE);
@@ -46,8 +47,9 @@ public class Splash extends JFrame {
         progress.setBorderPainted(false);
         w.add(BorderLayout.PAGE_END,progress);
 
-        w.revalidate();
+        new ArenaRenderer();
 
+        w.revalidate();
         timer = new Timer(100, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
