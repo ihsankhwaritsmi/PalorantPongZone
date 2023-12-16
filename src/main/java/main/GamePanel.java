@@ -8,11 +8,9 @@ import javax.swing.*;
 
 import arena.Arena;
 import inputs.KeyboardInputs;
-import inputs.MouseInputs;
 
 public class GamePanel extends JPanel {
 
-    private MouseInputs mouseInputs;
     private Game game;
     private Arena arena;
     private JLabel label1;
@@ -21,14 +19,10 @@ public class GamePanel extends JPanel {
     private JLabel spacer;
 
     public GamePanel(Game game, Arena arena) {
-        mouseInputs = new MouseInputs(this);
         this.arena = arena;
         this.game = game;
         setPanelSize();
         addKeyListener(new KeyboardInputs(this));
-//        addMouseListener(mouseInputs);
-//        addMouseMotionListener(mouseInputs);
-
         try {
             // Create the font
             font = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/res-fonts/Tungsten-Bold.ttf")).deriveFont(64f);
